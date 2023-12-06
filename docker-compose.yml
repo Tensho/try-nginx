@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - rails
+
+  rails:
+    build:
+      context: rails
+    environment:
+      - BINDING=0.0.0.0
+      - RAILS_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./rails:/rails
