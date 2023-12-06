@@ -1,0 +1,2 @@
+module AccelHelper
+end
